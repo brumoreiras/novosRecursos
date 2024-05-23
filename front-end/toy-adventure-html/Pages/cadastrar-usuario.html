@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../Styles/styles-painel-controle.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/styles-listar-usuario.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/styles-alterar-dados.css" />
+    <link rel="stylesheet" type="text/css" href="../Styles/styles-cadastrar-usuario.css" />
+
+    <title>ToyAdventure - Cadastrar usuário</title>
+</head>
+
+<body>
+
+    <header class="header"> 
+        <img src="../Images/icones/Logo.png" alt="Logo ToyAdventure">
+        <div class="container__profile">
+            <a href="#" id="profile-link">
+                <p id="user-name"></p>
+                <img src="../Images/icones/account_circle.png" alt="Circle account" id="account-icon">
+            </a>
+            <div class="profile-menu" id="profile-menuu">
+                <p id="username"></p>
+                <p id="group"></p>
+                <a href="#" id="logout"><!-- <img src="../Images/icones/logout.svg" alt="logout">  -->Sair</a>
+            </div>
+        </div>
+    </header>
+    <section class="container__principal">
+        <div class="container__menu">
+            <h1>Menu</h1>
+            <nav class="menu__bar">
+                <a class="container__options__home" href="painel-de-controle.html"><img src="../Images/icones/home.svg"
+                        alt="Ícone home" />Home</a>
+                <a class="container__options__produto" href="listar-produtos"> <img src="../Images/icones/box.svg"
+                        alt="Ícone Produtos" />Produtos</a>
+                <a class="container__options__user" href="listar-usuario.html"><img
+                        src="../Images/icones/profile-person.svg" alt="Ícone Usuário" />Usuário</a>
+                <a class="container__options__pedido" href="listar-pedidos"><img src="../Images/icones/bag.svg"
+                        alt="Ícone Pedidos" />Pedidos</a>
+
+            </nav>
+        </div>
+
+        <div class="container__list">
+
+            <form action="" class="container__forms">
+                <h1>Cadastrar usuário no sistema</h1>
+                <h2>Dados cadastrais</h2>
+
+                <div class="container__dados__pessoais">
+                    <div class="titulo">
+                        <span>Dados pessoais</span>
+                    </div>
+                    <div class="container__input__dados">
+
+                        <div class="login-container">
+                            <div class="input-wrapper">
+                                <label class="label__input">Nome completo</label>
+                                <input class="input__forms" id="nome" type="text" value="" placeholder="Nome completo"
+                                    data-tipo="nome" required>
+                                <span class="mensagem-erro"></span>
+                            </div>
+                        </div>
+                        <div class="login-container">
+                            <div class="input-wrapper">
+                                <label class="label__input">CPF</label>
+                                <input class="input__forms" id="cpf" type="text" value="" placeholder="CPF" data-tipo="cpf_valid"
+                                    required>
+                                <span class="mensagem-erro"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="container__grupo">
+                    <span>Permissões do sistema / Grupo</span>
+                    <div class="container__radios">
+                        <div class="container__input__radio">
+                            <input class="" type="radio" value="ADMINISTRADOR" data-tipo="admin" required
+                                name="permissao">
+                            <label class="">Administrador</label>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                        <div class="container__input__radio">
+                            <input class="" type="radio" value="ESTOQUISTA" data-tipo="estoquista" required
+                                name="permissao">
+                            <label class="">Estoquista</label>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="titulo">
+                    <span>E-mail</span>
+                </div>
+                <div class="container__senha">
+
+                    <div class="login-container">
+                        <div class="input-wrapper">
+                            <label class="label__input">E-mail</label>
+                            <input class="input__forms" id="email" type="email" value="" placeholder="E-mail" data-tipo="email"
+                                required>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                    </div>
+                    <div class="login-container">
+                        <div class="input-wrapper">
+                            <label class="label__input">Confirme sua e-mail</label>
+                            <input class="input__forms" data-tipo="confirmeEmail" type="email" value=""
+                                placeholder="Confirme sua e-mail" data-tipo="confirmeEmail" required>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="titulo">
+                    <span>Senha</span>
+                </div>
+
+                <div class="container__senha">
+
+                    <div class="login-container">
+                        <div class="input-wrapper">
+                            <label class="label__input">Senha</label>
+                            <input class="input__forms" id="senha" type="password" value="" placeholder="Senha" data-tipo="senha"
+                                required>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                    </div>
+                    <div class="login-container">
+                        <div class="input-wrapper">
+                            <label class="label__input">Confirme sua senha</label>
+                            <input class="input__forms" id="confirmacaoSenha" data-tipo="confirmePassword" type="password" value=""
+                                placeholder="Confirme sua senha" data-tipo="confirmePassword" required>
+                            <span class="mensagem-erro"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__btn">
+                    <button class="btn__ativar" type="submit">Salvar</button>
+                    <button class="btn__desativar" href="../Pages/listar-usuario.html">Cancelar</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+    <script type="module" src="../JScript/coletarDados.js"></script>
+    <script type="module" src="../JScript/inputValidation.js"></script>
+    <script type="module" src="../JScript/Requests/cadastrarUsuario.js"></script>
+    <script type="module" src="../JScript/header.js"></script>
+    
+
+</body>
+
+</html>

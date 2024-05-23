@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../Styles/styles-painel-controle.css" />
+    <title>ToyAdventure - Painel de Controle</title>
+
+</head>
+
+<body>
+    <header class="header"> <!-- Implementar logica para quando estiver logado aparecer o nome do usuario -->
+        <img src="../Images/icones/Logo.png" alt="Logo ToyAdventure">
+        <div class="container__profile">
+            <a href="#" id="profile-link">
+                <p id="user-name"></p>
+                <img src="../Images/icones/account_circle.png" alt="Circle account" id="account-icon">
+            </a>
+            <div class="profile-menu" id="profile-menuu">
+                <p id="username"></p>
+                <p id="group"></p>
+                <a href="#" id="logout"><img src="../Images/icones/logout.svg" alt="logout">Sair</a>
+            </div>
+        </div>
+    </header>
+    <section class="container__principal">
+        <div class="container__options">
+            <h1>Painel de Controle</h1>
+            <div class="container__options__buttons">
+                <a href="../Pages/listar-produtos.html">Listar Produtos</a>
+                <a href="../Pages/listar-usuario.html">Listar Usuário</a>
+                <a href="../Pages/listar-pedidos.html">Listar Pedidos</a>
+            </div>
+        </div>
+    </section>
+    <script type="module" src="../JScript/header.js"></script>
+</body>
+
+</html>
