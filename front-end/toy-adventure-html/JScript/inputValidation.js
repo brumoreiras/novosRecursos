@@ -82,7 +82,7 @@ const mensagemErro = {
         valueMissing: 'O campo avaliação não pode estar vazio.'
     },
     descricao: {
-        valueMissing:'O campo descrição não pode estar vazio.'
+        valueMissing: 'O campo descrição não pode estar vazio.'
     },
 }
 // --------------- Responsável em validar as funções e retornar os erros se necessario --------------------------
@@ -191,3 +191,5 @@ function mostraMensagemErro(tipoDeInput, input) {
 
     return mensagem
 }
+
+exports.modulus = { TestaCPF }

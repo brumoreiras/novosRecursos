@@ -1,9 +1,42 @@
 const pool = require('../conexao.js');
 const bcrypt = require('bcrypt');
+const { TestaCPF } = require('./validador.js');
+const UsuarioFactory = require('../design/UsuarioFactory.js');
+
+
 
 module.exports = {
 
-    async registrarUsuario(req, res) { // está cadastrando e criptografando a senha
+    async registrarUsuario(req, res) {
+        const { nome, cpf, email, senha, grupo } = req.body;
+        console.log(req.body);
+
+        try {
+            const usuarioEncontrado = await pool.query(
+                'SELECT * FROM usuarios WHERE email = $1',
+                [email]
+            );
+
+            if (usuarioEncontrado.rows.length > 0) {
+                return res.status(400).json({ mensagem: 'Já existe usuário cadastrado com e-mail informado' });
+            }
+
+            const usuario = await UsuarioFactory.criarUsuario(nome, cpf, email, senha, grupo);
+
+            const cadastrarUsuario = await pool.query(
+                'INSERT INTO usuarios (nome, cpf, email, senha, grupo) VALUES ($1, $2, $3, $4, $5) RETURNING id, nome, cpf, email, senha, grupo',
+                [usuario.nome, usuario.cpf, usuario.email, usuario.senha, usuario.grupo]
+            );
+
+            return res.status(201).json({ mensagem: 'Cadastro realizado com sucesso!', usuario: cadastrarUsuario.rows[0] });
+
+        } catch (error) {
+            console.error('Ocorreu um erro ao registrar o usuário:', error);
+            return res.status(500).json({ mensagem: 'Erro interno do servidor' });
+        }
+    },
+
+    /* async registrarUsuario(req, res) { // está cadastrando e criptografando a senha
         const { nome, cpf, email, senha, grupo } = req.body;
         console.log(req.body)
 
@@ -13,24 +46,27 @@ module.exports = {
                 [email]
             );
 
-            const crypSenha = await bcrypt.hash(senha, 10);
+            const crypSenha = await bcrypt.hash(senha, 10);         
 
             if (usuarioEncontrado.rows.length > 0) {
                 return res.status(400).json({ mensagem: 'Já existe usuário cadastrado com e-mail informado' });
             }
+
+
 
             const cadastrarUsuario = await pool.query(
                 'INSERT INTO usuarios (nome, cpf, email, senha, grupo) VALUES ($1, $2, $3, $4, $5) RETURNING id, nome, cpf, email, senha, grupo',
                 [nome, cpf, email, crypSenha, grupo]
             );
 
-            return res.status(201).json(cadastrarUsuario.rows[0]);
+            return res.status(201).json({ mensagem: 'Cadastro realizado com sucesso!', usuario: cadastrarUsuario.rows[0] });
+
 
         } catch (error) {
             console.error('Ocorreu um erro ao registrar o usuário:', error);
             return res.status(500).json({ mensagem: 'Erro interno do servidor' });
         }
-    },
+    }, */
 
     /*     async getUsuario(req, res) {
             console.log('req usuario ', req.usuario);

@@ -16,7 +16,7 @@ export function gerarTabelaUsuarios(usuarios) {
         row.innerHTML = `
             <td>${usuario.nome}</td>
             <td>${usuario.email}</td>
-            <td>${usuario.permissao}
+            <td>${usuario.grupo[0].toUpperCase() + usuario.grupo.substring(1)}</td>
             <td>${usuario.ativo ? 'Ativo' : 'Inativo'}</td>
             <td class="button-cell">
                     <button  class="btn__alterar open-modal" data-id="${usuario.id}">Alterar</button>
@@ -30,7 +30,7 @@ export function gerarTabelaUsuarios(usuarios) {
             </td>
             <td style="text-align: center;">
                 <img src="../Images/icones/inventory.svg" alt="icone de uma lixeira para deletar dados cadastrados">
-                <img src="../Images/icones/delete.svg" alt="icone de uma lixeira para deletar dados cadastrados">
+                <img src="../Images/icones/delete.svg" alt="icone de uma lixeira para deletar dados cadastrados" id="deleteButton">
             </td>
           
         `;
@@ -38,22 +38,21 @@ export function gerarTabelaUsuarios(usuarios) {
         // Adiciona a linha à tabela
         tabela.appendChild(row);
 
-        if (isAdmin) {
-            console.log(isAdmin)
-            const openModalButton = row.querySelector(".open-modal");
-            openModalButton.addEventListener("click", () => {
-                document.getElementById('nome').value = usuario.nome;
-                document.getElementById('senha').value = usuario.senha;
-                console.log('usuario :::> ', usuario.id)
 
-                const modal = document.querySelector("#modal");
-                const fade = document.querySelector("#fade");
+        const openModalButton = row.querySelector(".open-modal");
+        openModalButton.addEventListener("click", () => {
+            document.getElementById('nome').value = usuario.nome;
+            document.getElementById('senha').value = usuario.senha;
+            console.log('usuario :::> ', usuario.id)
+
+            const modal = document.querySelector("#modal");
+            const fade = document.querySelector("#fade");
 
 
-                modal.classList.remove("hide");
-                fade.classList.remove("hide");
-            });
-        }
+            modal.classList.remove("hide");
+            fade.classList.remove("hide");
+        });
+
     });
 
 

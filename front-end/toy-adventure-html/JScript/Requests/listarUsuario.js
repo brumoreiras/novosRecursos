@@ -23,6 +23,7 @@ export async function carregarUsuarios() {
 
         // Chama a função para gerar a tabela com os usuários obtidos
         gerarTabelaUsuarios(usuarios);
+        console.table(usuarios)
     } catch (error) {
         console.error('Ocorreu um erro ao carregar os usuários:', error);
     }

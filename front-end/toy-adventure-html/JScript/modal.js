@@ -8,5 +8,4 @@ const toggleModal = () => {
   fade.classList.toggle("hide");
 };
 
-
 closeModalButton.addEventListener("click", toggleModal);

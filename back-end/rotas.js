@@ -4,7 +4,7 @@ const express = require('express');
 const rotas = express();
 const { registrarUsuario, getUsuario, atualizarUsuario, listarUsuarios, alterarStatusUsuario } = require('./src/controladores/usuariosController.js');
 
-const { authentication, validaToken } = require('./src/middlewares/authentication.js');
+const { authentication, validaToken, logout } = require('./src/middlewares/authentication.js');
 const { validaCampoCadastro, validaCampoLogin, validaAlteracaoUsuario } = require('./src/middlewares/validation.js');
 const { cadastroProdutos } = require('./src/controladores/produtoController.js');
 
@@ -15,6 +15,7 @@ rotas.post('/login', authentication); //login do usuario
 rotas.put('/alterar-status', alterarStatusUsuario)
 rotas.get('/usuario', getUsuario); 
 rotas.put('/alterar-usuario', atualizarUsuario) */
+rotas.post('/logout', logout)
 
 rotas.post('/produto', cadastroProdutos);
 
