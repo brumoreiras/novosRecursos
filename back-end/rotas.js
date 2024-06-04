@@ -2,11 +2,12 @@ const express = require('express');
 
 
 const rotas = express();
-const { registrarUsuario, getUsuario, atualizarUsuario, listarUsuarios, alterarStatusUsuario } = require('./src/controladores/usuariosController.js');
+const { registrarUsuario, getUsuario, atualizarUsuario, listarUsuarios, alterarStatusUsuario, buscarUsuarios, deletarUsuario } = require('./src/controladores/usuariosController.js');
 
 const { authentication, validaToken, logout } = require('./src/middlewares/authentication.js');
 const { validaCampoCadastro, validaCampoLogin, validaAlteracaoUsuario } = require('./src/middlewares/validation.js');
 const { cadastroProdutos } = require('./src/controladores/produtoController.js');
+const multer = require('multer');
 
 //rotas usuarios
 /* rotas.post('/usuario',  registrarUsuario); */ //cadastrarUsuario
@@ -26,6 +27,8 @@ rotas.get('/listar-usuario', listarUsuarios)
 rotas.get('/usuario', getUsuario); //detalhar usuario
 rotas.put('/alterar-usuario', atualizarUsuario); //atualizar usuario
 rotas.put('/alterar-status', alterarStatusUsuario);
+rotas.get('/buscar-usuarios', buscarUsuarios);
+rotas.delete('/deletar-usuario', deletarUsuario);
 
 
 module.exports = rotas;

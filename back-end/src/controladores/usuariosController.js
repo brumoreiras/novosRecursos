@@ -170,7 +170,49 @@ module.exports = {
         } catch (error) {
             return res.status(500).json({ mensagem: 'Erro interno do servidor.' });
         }
+    },
+
+    async buscarUsuarios(req, res) {
+        const { query } = req.query;
+        console.log('Query:', query);
+
+        if (!query) {
+            return res.status(400).json({ mensagem: 'Query de busca não fornecida' });
+        }
+
+        try {
+            const usuarios = await pool.query(
+                'SELECT id, nome, email, grupo, ativo FROM usuarios WHERE nome ILIKE $1 OR email ILIKE $1',
+                [`%${query}%`]
+            );
+
+            return res.status(200).json(usuarios.rows);
+        } catch (error) {
+            console.error('Erro ao buscar usuários:', error);
+            return res.status(500).json({ mensagem: 'Erro interno do servidor' });
+        }
+    },
+
+    async deletarUsuario(req, res) {
+        const { id } = req.query;
+        console.log('id :::: ', id)
+        console.log('id :::: ', req.query)
+
+        try {
+            const result = await pool.query('DELETE FROM usuarios WHERE id = $1', [id]);
+
+            if (result.rowCount === 0) {
+                return res.status(404).json({ mensagem: 'Usuário não encontrado.' });
+            }
+
+            return res.status(200).json({ mensagem: 'Usuário deletado com sucesso.' });
+        } catch (error) {
+            console.error('Erro ao deletar usuário:', error);
+            return res.status(500).json({ mensagem: 'Erro interno do servidor.' });
+        }
     }
+
+
 
 
 }
