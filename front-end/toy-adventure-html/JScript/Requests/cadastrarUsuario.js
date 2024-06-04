@@ -6,10 +6,6 @@ export async function aoSalvar(dados) {
     // console.log('O que está sendo recebido:::> ', dados)
     //const { nome, cpf, email, grupo, senha } = dados;
     console.table(dados)
-
-
-    // debugger;
-
     try {
         const token = localStorage.getItem('token');
         // console.log('token :::> ', token)
@@ -24,11 +20,10 @@ export async function aoSalvar(dados) {
         })
 
         if (response.ok) {
-             navigate("../front-end/toy-adventure-html/Pages/listar-usuario.html");
-            /* navigate("/Pages/listar-usuario.html"); */
+             navigate("/Pages/listar-usuario.html");
+            
             console.table('Retorno dos dados', dados)
         } else {
-
             alert("Erro ao cadastrar usuário:", response.statusText);
             console.log("Erro ao cadastrar usuário:", response);
         }

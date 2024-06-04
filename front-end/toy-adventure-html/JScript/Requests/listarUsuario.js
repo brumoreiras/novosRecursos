@@ -1,3 +1,4 @@
+
 import { gerarTabelaUsuarios } from "../listarUsuarioDoBanco.js";
 
 export async function carregarUsuarios() {

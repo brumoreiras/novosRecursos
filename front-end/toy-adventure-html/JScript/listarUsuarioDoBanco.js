@@ -1,3 +1,5 @@
+import { deletarUsuario } from "./Requests/deletarUsuario.js";
+
 export function gerarTabelaUsuarios(usuarios) {
     // Elemento HTML da tabela
     const tabela = document.getElementById('create_list');
@@ -14,27 +16,29 @@ export function gerarTabelaUsuarios(usuarios) {
 
         // Adiciona as células da linha com os dados do usuário
         row.innerHTML = `
-            <td>${usuario.nome}</td>
+            <td class="coluna-nome">${usuario.nome}</td>
             <td>${usuario.email}</td>
-            <td>${usuario.grupo[0].toUpperCase() + usuario.grupo.substring(1)}</td>
+            <td class="coluna-grupo">${usuario.grupo[0].toUpperCase() + usuario.grupo.substring(1)}</td>
             <td>${usuario.ativo ? 'Ativo' : 'Inativo'}</td>
             <td class="button-cell">
                     <button  class="btn__alterar open-modal" data-id="${usuario.id}">Alterar</button>
             </td>
-            <td class="button-cell" style="text-align: center;">
+            <td class="button-cell" >
                 <button class="btn__desativar ${usuario.ativo ? 'desativar' : 'ativar'}" 
                         data-id="${usuario.id}" 
                         data-ativo="${usuario.ativo}">
                     ${usuario.ativo ? 'Desativar' : 'Ativar'}
                 </button>
             </td>
-            <td style="text-align: center;">
-                <img src="../Images/icones/inventory.svg" alt="icone de uma lixeira para deletar dados cadastrados">
-                <img src="../Images/icones/delete.svg" alt="icone de uma lixeira para deletar dados cadastrados" id="deleteButton">
-            </td>
+          
           
         `;
+        //  <img src="../Images/icones/inventory.svg" alt="icone de uma lixeira para deletar dados cadastrados">
 
+       /*  <td style="text-align: center;">
+
+            <img src="../Images/icones/delete.svg" alt="icone de uma lixeira para deletar dados cadastrados" id="deleteButton" onclick="deletarUsuario(${usuario.id})">
+        </td> */
         // Adiciona a linha à tabela
         tabela.appendChild(row);
 

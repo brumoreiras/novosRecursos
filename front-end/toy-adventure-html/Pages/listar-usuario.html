@@ -32,7 +32,7 @@
             <nav class="menu__bar">
                 <a class="container__options__home" href="painel-de-controle.html"><img src="../Images/icones/home.svg"
                         alt="Ícone home" />Home</a>
-                <a class="container__options__produto" href="listar-produtos"> <img src="../Images/icones/box.svg"
+                <a class="container__options__produto" href="listar-produtos.html"> <img src="../Images/icones/box.svg"
                         alt="Ícone Produtos" />Produtos</a>
                 <a class="container__options__user" href="listar-usuario.html"><img
                         src="../Images/icones/profile-person.svg" alt="Ícone Usuário" />Usuário</a>
@@ -42,12 +42,12 @@
             </nav>
         </div>
 
-        <div class="container__list">
+        <div class="container__list" style="height: 80vh; padding: 16px;">
             <div class="container__list__header">
                 <h1>Consultar Usuário</h1>
                 <input type="text" id="pesquisaUsuario" placeholder="Pesquisar usuário" />
-                <a class="button__hedar__list" href="cadastrar-usuario.html"><img
-                        src="../Images/icones/Group 1.svg" alt="Icone para adicionar contato contino em um botão">Adicionar</a>
+                <a class="button__hedar__list" href="cadastrar-usuario.html"><img src="../Images/icones/Group 1.svg"
+                        alt="Icone para adicionar contato contino em um botão">Adicionar</a>
             </div>
             <div class="container__table">
                 <h2>Lista de Usuário </h2>
@@ -59,34 +59,12 @@
                             <th>Grupo</th>
                             <th>Status</th>
                             <th>Alterar</th>
-                            <th style="text-align: center;">Alterar Status</th>
-                            <th style="text-align: center;">Deletar</th>
+                            <th >Alterar Status</th> <!-- style="text-align: center;" -->
+                            <!-- <th style="text-align: center;">Deletar</th> -->
                         </tr>
                     </thead>
                     <tbody id="create_list">
-                        <!--  Aqui eu preciso implementar uma logica para quando for clicado em ativar habilitar o css para cada cor e alterar a propriedade no banco de dados -->
-                        <!--   <a class="btn__alterar" href="alterar-dados.html">Alterar</a>
-                        <button class="btn__ativar" href="alterar-dados.html">Ativar</button>
-                        <button class="btn__desativar" href="alterar-dados.html">Desativar</button> -->
 
-                        <!-- <tr>
-                            <td>Bruno Moreira Santos</td>
-                            <td>brunomoreira.ms@gmai.com</td>
-                            <td>Administrador</td>
-                            <td>Ativo</td>
-
-                            <td className="button-cell">
-                                <a class="btn__alterar" href="alterar-dados.html">Alterar</a>
-                            </td>
-                            <td className="button-cell">
-                                <button class="btn__desativar" href="alterar-dados.html">Desativar</button>
-                            </td>
-
-                            <td>
-                                <img src="../Images/icones/delete.svg"
-                                    alt="icone de uma lixeira para deletar dados cadastrados">
-                            </td>
-                        </tr> -->
                     </tbody>
                 </table>
             </div>
@@ -158,7 +136,7 @@
                         <button type="submit" class="btn__salvar" id="salvar-alteracao">Salvar</button>
                         <button class="btn__cancelar" id="close-modal">Cancelar</button>
                     </div>
-                     
+
 
                 </div>
             </form>
@@ -167,13 +145,15 @@
     </section>
     <script type="module" src="../JScript/listarUsuarioDoBanco.js"></script>
     <script type="module" src="../JScript/Requests/listarUsuario.js"></script>
-    <!-- <script type="module" src="../JScript/Requests/pesquisarUsuario.js"></script> -->
-
+    <script type="module" src="../JScript/Requests/pesquisarUsuario.js"></script>
+    
     <script type="module" src="../JScript/Requests/getUsuario.js"></script>
     <script type="module" src="../JScript/Requests/alterarDadosUsuario.js"></script>
     <script type="module" src="../JScript/modal.js"></script>
     <script type="module" src="../JScript/Requests/alterarStatus.js"></script>
     <script type="module" src="../JScript/header.js"></script>
+
+    <script type="module" src="../JScript/Requests/deletarUsuario.js"></script>
 </body>
 
 </html>

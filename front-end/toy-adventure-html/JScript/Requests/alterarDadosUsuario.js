@@ -4,8 +4,8 @@ const formulario = document.getElementById('formulario');
 
 if (formulario) {
     formulario.addEventListener('submit', async (evento) => {
-        
-        /* evento.preventDefault(); */ // Evita o comportamento padrão de recarregar a página ao enviar o formulário
+
+        evento.preventDefault(); // Evita o comportamento padrão de recarregar a página ao enviar o formulário
 
         console.log('Clicou no botão de salvar :::> ', user);
 
@@ -43,6 +43,14 @@ if (formulario) {
     });
 }
 
+function atualizarUsuarioNaLista(id, nome, grupo) {
+    const linhaUsuario = document.querySelector(`tr[data-id="${id}"]`);
+    if (linhaUsuario) {
+        linhaUsuario.querySelector('.coluna-nome').textContent = nome;
+        linhaUsuario.querySelector('.coluna-grupo').textContent = grupo;
+    }
+}
+
 
 // Função para enviar uma requisição para atualizar os dados do usuário
 async function atualizarUsuario(id, nome, senha, grupo) {
@@ -51,11 +59,11 @@ async function atualizarUsuario(id, nome, senha, grupo) {
     console.log('ID do usuário:', senha)
     console.log('ID do usuário:', grupo)
 
-   
+
     try {
         const token = localStorage.getItem('token');
         console.log('token :::> ', token)
-   
+
         const response = await fetch(`http://localhost:3033/alterar-usuario?id=${id}`, {
             method: 'PUT',
             headers: {
@@ -67,6 +75,10 @@ async function atualizarUsuario(id, nome, senha, grupo) {
 
         if (response.ok) {
             console.log('Usuário atualizado com sucesso.');
+            console.log('Usuário atualizado com sucesso.');
+            document.getElementById('modal').classList.add('hide');
+            document.getElementById('fade').classList.add('hide');
+            atualizarUsuarioNaLista(id, nome, grupo);
         } else {
             console.error('Erro ao atualizar usuário:', response.statusText);
         }

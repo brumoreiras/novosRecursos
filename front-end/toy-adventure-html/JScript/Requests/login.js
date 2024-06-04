@@ -1,4 +1,4 @@
-/* const button = document.getElementById('botao');
+const button = document.getElementById('botao');
 const form = document.getElementById('fomrLogin');
 
 function navigate(route) {
@@ -34,7 +34,7 @@ form.addEventListener('submit', async (event) => {
             console.log("Login realizado com sucesso ",data.nomeUsuario);
 
         } else {
-            alert('Se um cliente entrar com email e senha o mesmo deve ser rejeitado. Esta tela de login é apenas para usuários de backoffice');
+            alert('Esta tela de login é apenas para usuários de backoffice');
             console.log("Erro de acesso");
            
         }
@@ -45,9 +45,9 @@ form.addEventListener('submit', async (event) => {
 
     console.log('Botão clicado => ', email, senha);
 });
- */
 
-const button = document.getElementById('botao');
+
+/* const button = document.getElementById('botao');
 const form = document.getElementById('fomrLogin');
 
 function navigate(route) {
@@ -115,3 +115,4 @@ form.addEventListener('submit', async (event) => {
 
     console.log('Botão clicado => ', email, senha);
 });
+ */

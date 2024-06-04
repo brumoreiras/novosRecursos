@@ -23,8 +23,8 @@ export const getUsuario = document.addEventListener('click', async (event) => {
 
             const usuario = await response.json();
             user = usuario;
-            console.log('Usuario :::> ', usuario);
-            console.log('Usuario user ::::> ', user)
+            /* console.log('Usuario :::> ', usuario);
+            console.log('Usuario user ::::> ', user) */
             // Preenche os campos do formulário com os dados do usuário obtidos
 
             // Define o ID do usuário no atributo data-id do formulário

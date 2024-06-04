@@ -14,9 +14,8 @@ accountIcon.addEventListener('click', () => {
 
 // Adicionar evento de clique no botão de logout
 logoutButton.addEventListener('click', () => {
-    // Limpar o localStorage e redirecionar para a página de login, por exemplo
     localStorage.clear();
-    window.location.href = "/front-end/toy-adventure-html/";
+    window.location.href = "../index.html";
 });
 
 // Função para preencher o menu com informações do usuário

@@ -2,12 +2,9 @@ import { carregarUsuarios } from './listarUsuario.js';
 
 async function alterarStatusUsuario(id, ativo, botao) {
 
-    console.log('id enviado req ::: ', id)
+    /* console.log('id enviado req ::: ', id)
     console.log('status ativo req ::: ', ativo)
-    console.log('botao req ::: ', botao)
-
-
-
+    console.log('botao req ::: ', botao) */
     try {
         const token = localStorage.getItem('token');
         console.log('token :::> ', token)
