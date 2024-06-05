@@ -15,7 +15,7 @@ accountIcon.addEventListener('click', () => {
 // Adicionar evento de clique no botão de logout
 logoutButton.addEventListener('click', () => {
     localStorage.clear();
-    window.location.href = "../index.html";
+    window.location.href = "/front-end/";
 });
 
 // Função para preencher o menu com informações do usuário

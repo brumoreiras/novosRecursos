@@ -18,7 +18,9 @@ CREATE TABLE produtos (
     avaliacao NUMERIC(2,1) CHECK (avaliacao >= 1 AND avaliacao <= 5),
     descricao TEXT NOT NULL,
     preco NUMERIC(10,2) NOT NULL,
-    qtd_estoque INT NOT NULL
+    qtd_estoque INT NOT NULL,
+    ativo BOOLEAN NOT NULL DEFAULT TRUE,
+    criado_em TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Tabela para armazenar as imagens dos produtos

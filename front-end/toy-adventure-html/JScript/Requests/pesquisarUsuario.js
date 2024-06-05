@@ -66,10 +66,7 @@ function exibirUsuarios(usuarios, query) {
                 ${usuario.ativo ? 'Desativar' : 'Ativar'}
             </button>
         </td>
-        <td style="text-align: center;">
-           
-            <img src="../Images/icones/delete.svg" alt="icone de uma lixeira para deletar dados cadastrados" id="deleteButton" onclick="deletarUsuario(${usuario.id})">
-        </td>
+        
           
         `;
 

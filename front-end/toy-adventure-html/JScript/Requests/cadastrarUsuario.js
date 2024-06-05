@@ -20,7 +20,7 @@ export async function aoSalvar(dados) {
         })
 
         if (response.ok) {
-             navigate("/Pages/listar-usuario.html");
+             navigate("../Pages/listar-usuario.html");
             
             console.table('Retorno dos dados', dados)
         } else {

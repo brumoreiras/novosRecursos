@@ -6,9 +6,18 @@ const { registrarUsuario, getUsuario, atualizarUsuario, listarUsuarios, alterarS
 
 const { authentication, validaToken, logout } = require('./src/middlewares/authentication.js');
 const { validaCampoCadastro, validaCampoLogin, validaAlteracaoUsuario } = require('./src/middlewares/validation.js');
-const { cadastroProdutos } = require('./src/controladores/produtoController.js');
+const { cadastroProdutos, listarProdutos, obterProduto } = require('./src/controladores/produtoController.js');
 const multer = require('multer');
 
+rotas.post('/produto', cadastroProdutos);
+rotas.get('/produto', async (req, res) => {
+    const { id } = req.query;
+    if (id) {
+        await obterProduto(req, res);
+    } else {
+        await listarProdutos(req, res);
+    }
+});
 //rotas usuarios
 /* rotas.post('/usuario',  registrarUsuario); */ //cadastrarUsuario
 rotas.post('/login', authentication); //login do usuario
@@ -18,11 +27,8 @@ rotas.get('/usuario', getUsuario);
 rotas.put('/alterar-usuario', atualizarUsuario) */
 rotas.post('/logout', logout)
 
-rotas.post('/produto', cadastroProdutos);
-
-
 rotas.use(validaToken); //Os endpoints abaixo só podem funcionar se for valido o token. 
-rotas.post('/usuario',  registrarUsuario); 
+rotas.post('/usuario', registrarUsuario);
 rotas.get('/listar-usuario', listarUsuarios)
 rotas.get('/usuario', getUsuario); //detalhar usuario
 rotas.put('/alterar-usuario', atualizarUsuario); //atualizar usuario
